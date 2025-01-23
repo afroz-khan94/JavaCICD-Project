@@ -1,7 +1,7 @@
 node{
-      def dockerImageName= 'intdoc89/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
+      def dockerImageName= 'afrozkhan94/javadedockerapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
-         git 'https://github.com/zafar90/java-groovy-docker'
+         git 'https://github.com/afroz-khan94/JavaCICD-Project.git'
       }
       stage('Build'){
          // Get maven home path and build
@@ -22,7 +22,7 @@ node{
    
       stage('Publish Docker Image'){
          withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
-              sh "docker login -u intdoc89 -p ${dockerPWD}"
+              sh "docker login -u afrozkhan94 -p ${dockerPWD}"
          }
         sh "docker push ${dockerImageName}"
       }
