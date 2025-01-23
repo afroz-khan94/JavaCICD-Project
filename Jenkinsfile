@@ -32,7 +32,7 @@ node{
             def changingPermission='sudo chmod +x stopscript.sh'
             def scriptRunner='sudo ./stopscript.sh'           
             def dockerRun= "sudo docker run -p 8089:8090 -d --name ${dockerContainerName} ${dockerImageName}" 
-            withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
+            withCredentials([string(credentialsId: 'deploymentpass', variable: 'dpPWD')]) {
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196" 
                   //sh "sshpass -p ${dpPWD} scp -r stopscript.sh devops@52.76.172.196:/home/devops" 
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no devops@52.76.172.196 ${changingPermission}"
